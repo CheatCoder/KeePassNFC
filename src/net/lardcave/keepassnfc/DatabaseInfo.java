@@ -42,6 +42,7 @@ public class DatabaseInfo {
 	public String keyfile_filename;
 	public String password;
 	public int config;
+
 	
 	public DatabaseInfo(String database, String keyfile_filename, String password, int config)
 	{

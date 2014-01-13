@@ -35,6 +35,7 @@ import android.nfc.NdefRecord;
 import android.nfc.NfcAdapter;
 import android.os.Bundle;
 import android.os.Parcelable;
+import java.io.*;
 
 public class ReadActivity extends Activity {
 	@Override
@@ -64,8 +65,13 @@ public class ReadActivity extends Activity {
 		}
 		
 		if (payload != null) {
+			try{
 			load_from_nfc(payload);
+			}catch(Exception e){
+				finish();
+			}
 		}
+		finish();
 	}
 	
 	private boolean load_from_nfc(byte[] payload)

@@ -50,6 +50,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ipaulpro.afilechooser.utils.FileUtils;
+import android.view.*;
+import android.content.*;
 
 
 /* Probably want this to have foreground NFC-everything, so that people can scan a fob and then press the button?
@@ -307,12 +309,24 @@ public class WriteActivity extends Activity {
 		rb.setChecked(checked);
 	}
 
-/*	@Override
+@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.write, menu);
+		getMenuInflater().inflate(R.menu.menu, menu);
 		return true;
+}
+
+@Override
+public boolean onOptionsItemSelected(MenuItem item)
+{
+	// TODO: Implement this method
+	switch(item.getItemId()){
+		case R.id.setting:
+			Intent intent = new Intent(getApplicationContext(), settingActivity.class);
+			startActivity(intent);
+			return true;
 	}
-*/
+	return super.onOptionsItemSelected(item);
+}
 
 }

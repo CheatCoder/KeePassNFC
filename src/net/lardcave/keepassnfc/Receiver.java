@@ -38,6 +38,7 @@ public class Receiver extends BroadcastReceiver
                 Intent intent1 = new Intent(context , WriteActivity.class);
                 intent1.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(intent1);
+				setResultData(null);
 				
 				//PackageManager p = context.getPackageManager();
 				if(show)

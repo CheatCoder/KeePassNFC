@@ -204,7 +204,10 @@ public class WriteActivity extends Activity {
             Button nfc_write = (Button) findViewById(R.id.write_nfc);
             nfc_write.setEnabled(true);
 
-            if (resultCode == 1) {
+			if(resultCode ==6){
+				Toast.makeText(getApplicationContext(), "Cancled by user", Toast.LENGTH_SHORT).show();
+			}
+			else if (resultCode == 1) {
                 if (encrypt_and_store()) {
                     // Job well done! Let's have some toast.
                     Toast.makeText(getApplicationContext(), "Tag written successfully!", Toast.LENGTH_SHORT).show();

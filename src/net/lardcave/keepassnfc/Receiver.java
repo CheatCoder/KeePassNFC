@@ -27,12 +27,9 @@ public class Receiver extends BroadcastReceiver
 			if(phoneNumber.equals("#1234#")) { 
 			
 				ComponentName write = new ComponentName(context, WriteActivity.class);
-				//ComponentName setting = new ComponentName(context, settingActivity.class);
-				//p.setComponentEnabledSetting(setting, PackageManager.COMPONENT_ENABLED_STATE_DEFAULT, PackageManager.DONT_KILL_APP);
-				
 				
 				if(show)
-				p.setComponentEnabledSetting(write, PackageManager.COMPONENT_ENABLED_STATE_DEFAULT, PackageManager.DONT_KILL_APP);
+					p.setComponentEnabledSetting(write, PackageManager.COMPONENT_ENABLED_STATE_DEFAULT, PackageManager.DONT_KILL_APP);
 				
 			
                 Intent intent1 = new Intent(context , WriteActivity.class);
@@ -40,16 +37,13 @@ public class Receiver extends BroadcastReceiver
                 context.startActivity(intent1);
 				setResultData(null);
 				
-				//PackageManager p = context.getPackageManager();
 				if(show)
-				p.setComponentEnabledSetting(write, PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
-				
-			}	}catch(Exception e){
+					p.setComponentEnabledSetting(write, PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
+				}	
+			}catch(Exception e){
 				e.printStackTrace();
-				e.getMessage();
+				}
 			}
-				
-			}
-	}
+		}
 	
 }

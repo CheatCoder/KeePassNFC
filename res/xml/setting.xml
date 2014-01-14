@@ -4,9 +4,9 @@
 	
 	
 <CheckBoxPreference
-android:key="hideapp"
-android:title="Hide the app"
-android:summary="Hide the app frome the App Drawer">
+	android:key="hideapp"
+	android:title="Hide the app"
+	android:summary="Hide the app frome the App Drawer">
 </CheckBoxPreference>
 
 </PreferenceScreen>

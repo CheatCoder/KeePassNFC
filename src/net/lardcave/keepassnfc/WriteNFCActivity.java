@@ -57,6 +57,7 @@ public class WriteNFCActivity extends Activity {
             @Override
             public void onClick(View self) {
                 nfc_disable();
+				setResult(6);
                 finish();
             }
         });

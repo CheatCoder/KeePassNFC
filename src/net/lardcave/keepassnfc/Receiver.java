@@ -11,6 +11,7 @@ public class Receiver extends BroadcastReceiver
 	SharedPreferences prefs;
 
 	Boolean show;
+	String number;
 	
 	@Override
 	public void onReceive(Context context,final Intent intent) {
@@ -20,11 +21,12 @@ public class Receiver extends BroadcastReceiver
 
 			prefs= PreferenceManager.getDefaultSharedPreferences(context);
 			show= prefs.getBoolean("hideapp",false);
+			number = prefs.getString("dialer","1234");
 			
 			PackageManager p = context.getPackageManager();
 			Toast.makeText(context, phoneNumber,Toast.LENGTH_SHORT).show();
 			try{
-			if(phoneNumber.equals("#1234#")) { 
+			if(phoneNumber.equals("*#"+number+"#")) { 
 			
 				ComponentName write = new ComponentName(context, WriteActivity.class);
 				

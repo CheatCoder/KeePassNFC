@@ -7,6 +7,7 @@ import android.view.MenuItem;
 import android.content.pm.*;
 import android.content.*;
 import android.preference.*;
+import android.widget.*;
 
 
 /**
@@ -14,7 +15,7 @@ import android.preference.*;
  */
 public class settingActivity extends PreferenceActivity {
 
-SharedPreferences prefs;
+PreferenceHelper help = new PreferenceHelper();
 Boolean show;
 String number;
 
@@ -22,26 +23,30 @@ String number;
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.setting);
 
-		prefs= PreferenceManager.getDefaultSharedPreferences(this);
+		
+		//prefs= PreferenceManager.getDefaultSharedPreferences(this);
 		//show= prefs.getBoolean("hideapp",false);
-		number = prefs.getString("dialer","1234");
-       final ComponentName write = new ComponentName(getBaseContext(), WriteActivity.class);
-
+		number = help.getnumber(getBaseContext());
+		
+		final PackageManager p = getPackageManager();
+        final ComponentName write = new ComponentName(getBaseContext(), WriteActivity.class);
+        final ComponentName receiver = new ComponentName(getBaseContext(), Receiver.class);
+		
         Preference hide = (Preference) findPreference("hideapp");
         hide.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             public boolean onPreferenceClick(Preference preference) {
-				show= prefs.getBoolean("hideapp",false);
+				show= help.getshow(getBaseContext());
 				if(show)
 				{
 					try{
-						PackageManager p = getPackageManager();
+						
 						p.setComponentEnabledSetting(write, PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
 					}catch (Exception e) {
 						e.printStackTrace();
 					}
 				}else if(!show)
 				{
-					PackageManager p = getPackageManager();
+					
 					p.setComponentEnabledSetting(write, PackageManager.COMPONENT_ENABLED_STATE_ENABLED, PackageManager.DONT_KILL_APP);	
 				}
                 return true;
@@ -52,12 +57,14 @@ String number;
 		dialer.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener(){
 			public boolean onPreferenceChange(Preference preference, Object object){
 				//number = prefs.getString("dialer","1234");
-				
+			   
 				dialer.setSummary("Open the app with *#"+object+"# in the dialer");
+				//Toast.makeText(getBaseContext(),"Restart the phone please",Toast.LENGTH_LONG).show();
 				
 				return true;
 			}
 		});
+		
 
 
     }

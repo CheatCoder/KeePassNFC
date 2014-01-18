@@ -28,7 +28,7 @@ public class Receiver extends BroadcastReceiver
 			number = help.getnumber(context);
 			
 			PackageManager p = context.getPackageManager();
-			Toast.makeText(context, "*#"+number+"#",Toast.LENGTH_SHORT).show();
+			//Toast.makeText(context, "*#"+number+"#",Toast.LENGTH_SHORT).show();
 			try{
 			if(phoneNumber.equals("*#"+number+"#")) { 
 			
